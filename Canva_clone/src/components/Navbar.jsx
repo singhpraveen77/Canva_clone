@@ -16,12 +16,12 @@ const Navbar = () => {
             
             <div className="w-8 "></div> {/* This div creates the gap between the logo and the elements */}
             {divs.map((div, index) => (
-                <div key={index} className="rounded-full hover:bg-gray-200 flex items-center justify-between h-5vh w-7vw p-2 ">
+                <div key={index} className="cursor-pointer rounded-full hover:bg-gray-200 flex items-center justify-between h-5vh w-7vw p-2 ">
                     <span className="mr-2">{div}</span><FaAngleDown />
                 </div>
             ))}
             
-            <div className="hover:bg-gray-300 flex items-center justify-between h-5vh w-7vw p-2 rounded-full">
+            <div className="cursor-pointer hover:bg-gray-300 flex items-center justify-between h-5vh w-7vw p-2 rounded-full">
                 <span className="mr-2">Learn</span><FaAngleDown />
             </div>
             
@@ -30,7 +30,7 @@ const Navbar = () => {
 
 
 
-        <div className='n-right flex p-4 gap-4  font-xl text-2xl '>
+        <div className='n-right flex p-4 gap-4  font-xl text-2xl cursor-pointer'>
         <IoHomeOutline />
         <BsQuestionCircle />
         <FaUserCircle className='font-xl text-2xl'/>
