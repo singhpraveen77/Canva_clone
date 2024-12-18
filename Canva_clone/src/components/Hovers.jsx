@@ -1,13 +1,29 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux';
-import { toggleState, change_to } from '../Store';
+import { toggleState, change_to ,set_theme_red} from '../Store';
 
 const Hovers = () => {
 
   const sharedState = useSelector((state) => state.shared.value);
+  // const set_theme_State = useSelector((state) => state.set_theme_red.value); // Corrected selector for theme state
   const themeState = useSelector((state) => state.theme.value); // Corrected selector for theme state
+
   const dispatch = useDispatch();
 
+//setting the theme
+  const handle_Theme_in= () => {
+    
+        dispatch(set_theme_red(true));
+    
+};
+
+  const handle_theme_out = () => {
+    
+        dispatch(set_theme_red(false));
+    
+};
+
+// hovering effect of bada div 
   const handleMouseEnter = () => {
     
         dispatch(toggleState(true));
@@ -20,6 +36,7 @@ const Hovers = () => {
     
 };
 
+// hovering effect of theme button
 const theme_enter = () => {
 
   dispatch(change_to(true));
@@ -69,7 +86,15 @@ const theme_leave = () => {
          onMouseEnter={()=>theme_enter()}
          onMouseLeave={()=>theme_leave()}
         className={`${themeState ? 'block':'hidden'} theme shadow-2xl rounded-md absolute bg-white top-[8vh] right-[50vh] h-[28vh] w-[25vw] border-[#a9a7a7] border-[1px] flex flex-wrap justify-center gap-3 items-center`}>
-          <div className='one-theme shadow-md hover:shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)] h-[10vh] w-[10vw] flex relative items-center justify-center' >
+          <div 
+          onMouseEnter={()=>handle_Theme_in()}
+          onMouseLeave={()=>handle_theme_out()}
+          onClick={()=>{
+            handle_Theme_in();
+            // theme_leave();
+          }}
+
+          className='one-theme shadow-md hover:shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)] h-[10vh] w-[10vw] flex relative items-center justify-center' >
             <div className='h-full w-[50%] bg-black'></div>
             <h1 className='z-50 bg-transparent absolute text-white font-serif text-xl'>Night Owl</h1>
             <div className='h-full w-[50%] bg-slate-600'></div>
